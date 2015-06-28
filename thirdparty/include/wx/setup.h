@@ -768,7 +768,7 @@
 /*
  * Define if your compiler has <tr1/type_traits>
  */
-#define HAVE_TR1_TYPE_TRAITS 1
+/* #undef HAVE_TR1_TYPE_TRAITS */
 
 /*
  * Define if your compiler has <type_traits>
