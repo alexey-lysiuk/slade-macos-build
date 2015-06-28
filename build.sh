@@ -49,6 +49,7 @@ $CMAKE_EXE ../SLADE \
 	-DFTGL_INCLUDE_DIR="${INC_DIR}" \
 	-DFTGL_LIBRARY="${LIB_DIR}/libftgl.a" \
 	-DGLEW_INCLUDE_PATH="${INC_DIR}" \
-	-DGLEW_LIBRARY="${LIB_DIR}/libGLEW.a"
+	-DGLEW_LIBRARY="${LIB_DIR}/libGLEW.a" \
+	-DCMAKE_EXE_LINKER_FLAGS="-framework AudioUnit -framework CoreAudio -framework CoreMIDI -framework OpenAL -framework QTKit -L\"${LIB_DIR}\" -lintl -lglib -logg -lvorbis -lvorbisenc -lFLAC -lsndfile"
 
 make
