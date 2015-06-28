@@ -1,0 +1,33 @@
+#!/bin/sh
+
+# A very basic replacement for full fledged wxWidgets configuration script
+# Tested only with CMake 3.0.2 and SLADE 3.1.0.4
+
+cd "`dirname \"$0\"`/.."
+
+case $@ in
+	"--selected-config")
+	echo osx_cocoa-unicode-static-3.0
+	exit 0
+	;;
+	
+	"--debug=no"|"--unicode=yes"|"--universal=no"|"--static=yes")
+	exit 0
+	;;
+	
+	"--debug=yes"|"--unicode=no"|"--universal=yes"|"--static=no")
+	exit 1
+	;;
+	
+	"--cxxflags")
+	echo -I`pwd`/include -D_FILE_OFFSET_BITS=64 -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ 
+	exit 0
+	;;
+	
+	"--libs std,aui,gl,stc,richtext,propgrid,media,html")
+	echo -L`pwd`/lib -framework Carbon -framework Cocoa -framework IOKit -framework OpenGL -framework WebKit -lwx_osx_cocoau_aui -lwx_osx_cocoau_gl -lwx_osx_cocoau_stc -lwx_osx_cocoau_richtext -lwx_osx_cocoau_propgrid -lwx_osx_cocoau_media -lwx_osx_cocoau_xrc -lwx_osx_cocoau_webview -lwx_osx_cocoau_qa -lwx_baseu_net -lwx_osx_cocoau_html -lwx_osx_cocoau_adv -lwx_osx_cocoau_core -lwx_baseu_xml -lwx_baseu -lwxscintilla -ljpeg -lexpat -lwxregexu -lwxtiff -lwxpng -lz -lpthread -liconv	
+	exit 0
+	;;
+esac
+
+exit 1
