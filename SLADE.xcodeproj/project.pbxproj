@@ -2913,7 +2913,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					thirdparty/lib,
-					"$(PROJECT_DIR)/thirdparty/lib",
 				);
 				PRODUCT_NAME = SLADE;
 				SHARED_PRECOMPS_DIR = "$(OBJROOT)/PrecompiledHeaders";
@@ -2951,7 +2950,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					thirdparty/lib,
-					"$(PROJECT_DIR)/thirdparty/lib",
 				);
 				PRODUCT_NAME = SLADE;
 				SHARED_PRECOMPS_DIR = "$(OBJROOT)/PrecompiledHeaders";
