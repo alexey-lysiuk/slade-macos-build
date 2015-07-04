@@ -2271,7 +2271,7 @@
 				8D1107290486CEB800E47090 /* Resources */,
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
-				8A537002154FE13E00F88FC4 /* Copy Resources */,
+				8A537002154FE13E00F88FC4 /* Build PK3 */,
 			);
 			buildRules = (
 			);
@@ -2334,19 +2334,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		8A537002154FE13E00F88FC4 /* Copy Resources */ = {
+		8A537002154FE13E00F88FC4 /* Build PK3 */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Resources";
+			name = "Build PK3";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "rsync -a \"${SRCROOT}/SLADE/dist/res/\" \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\"";
+			shellScript = "cd \"${SRCROOT}/SLADE/dist/res\"\nzip -r9 \"${TARGET_BUILD_DIR}/${EXECUTABLE_FOLDER_PATH}/slade.pk3\" .\n";
 		};
 		8AACD667193095D800654E63 /* Make Deploy Image */ = {
 			isa = PBXShellScriptBuildPhase;
