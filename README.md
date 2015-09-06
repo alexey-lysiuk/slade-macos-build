@@ -19,3 +19,6 @@ Execute `xcode.sh` script to clone the main repository and to start Xcode with t
 The downside of this method is it may fail if source files were added or removed from the main **SLADE** repository. In this case, use the CMake-based method.
 2. _Using CMake:_  
 Execute `build.sh` script to clone the main repository and to build **SLADE**. The application bundle is located inside `build` directory.
+
+In both cases the main repository is cloned into **SLADE** directory. This happened only once during the first run of the script. You will need to pull changes by hand after that.  
+Also, you can switch to a branch other than **master** and run the corresponding script again.
