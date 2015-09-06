@@ -18,4 +18,4 @@ There are two methods of building **SLADE**:
 Execute `xcode.sh` script to clone the main repository and to start Xcode with the corresponding project opened. Now you can compile and debug **SLADE** like any other OS X application.  
 The downside of this method is it may fail if source files were added or removed from the main **SLADE** repository. In this case, use the CMake-based method.
 2. _Using CMake:_  
-Execute `xcode.sh` script to clone the main repository and to build **SLADE**. The application bundle is located inside `build` directory.
+Execute `build.sh` script to clone the main repository and to build **SLADE**. The application bundle is located inside `build` directory.
