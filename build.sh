@@ -8,6 +8,12 @@ if [ ! -e SLADE ]; then
 	git clone https://github.com/sirjuddington/SLADE.git
 fi
 
+if [ -n "$1" ]; then
+    cd SLADE
+    git checkout "tags/$1"
+    cd ..
+fi
+
 if [ ! -e build ]; then
 	mkdir build
 fi
