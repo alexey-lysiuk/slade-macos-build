@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -o errexit
+
 cd "`dirname \"$0\"`"
 
 ROOT_DIR=`pwd`
@@ -20,7 +22,9 @@ fi
 
 cd build
 
+set +o errexit
 CMAKE_EXE=`which cmake`
+set -o errexit
 
 if [ -z $CMAKE_EXE ]; then
 	CMAKE_EXE=/Applications/CMake.app/Contents/bin/cmake

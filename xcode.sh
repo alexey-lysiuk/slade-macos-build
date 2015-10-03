@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -o errexit
+
 cd "`dirname \"$0\"`"
 
 if [ ! -e SLADE ]; then
