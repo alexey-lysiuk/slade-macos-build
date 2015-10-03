@@ -1,6 +1,7 @@
 /build/
 /deploy/
 /SLADE/
+/*.dmg
 
 # Xcode
 xcuserdata/
