@@ -22,3 +22,5 @@ Execute `build.sh` script to clone the main repository and to build **SLADE**. T
 
 In both cases the main repository is cloned into **SLADE** directory. This happened only once during the first run of the script. You will need to pull changes by hand after that.  
 Also, you can switch to a branch other than **master** and run the corresponding script again.
+
+It's possible to create a Disk Image `*.dmg` file, suitable for making redistributable builds. Execute `make_dmg.sh` script to generate it.
