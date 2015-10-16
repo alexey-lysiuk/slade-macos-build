@@ -24,3 +24,5 @@ In both cases the main repository is cloned into **SLADE** directory. This happe
 Also, you can switch to a branch other than **master** and run the corresponding script again.
 
 It's possible to create a Disk Image `*.dmg` file, suitable for making redistributable builds. Execute `make_dmg.sh` script to generate it.
+
+You can build and create a Disk Image at an arbitrary Git tag by specifying its name as a command line parameter for `xcode.sh` and `make_dmg.sh` scripts.
