@@ -7,9 +7,9 @@ This repository contains all third-party libraries required to build [SLADE](htt
 ### Requirements
 * Intel Mac with 64-bit CPU
 * OS X 10.6 Snow Leopard or newer
-* Xcode 3.2 or newer
-* Git (installed with the recent versions of Xcode)
-* [CMake](http://www.cmake.org/) 2.8 or newer (for CMake-based method only)
+* [Xcode](https://developer.apple.com/xcode/) 3.2 or newer
+* [Git](https://git-scm.com/) (installed with the recent versions of Xcode)
+* [CMake](https://www.cmake.org/) 2.8 or newer (for CMake-based method only)
 
 ### How to build
 There are two methods of building **SLADE**:
