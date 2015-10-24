@@ -3,9 +3,7 @@
 set -o errexit
 
 cd "`dirname \"$0\"`"
+./prepare.sh "$1"
 
-if [ ! -e SLADE ]; then
-	git clone https://github.com/sirjuddington/SLADE.git
-fi
-
-open SLADE.xcodeproj
+cd build
+open slade3.xcodeproj

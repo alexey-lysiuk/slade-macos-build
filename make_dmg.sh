@@ -8,7 +8,7 @@ cd "`dirname \"$0\"`"
 DEPLOY_DIR=deploy
 
 mkdir "$DEPLOY_DIR"
-cp -r build/slade.app "$DEPLOY_DIR/SLADE.app"
+cp -r build/Release/slade.app "$DEPLOY_DIR/SLADE.app"
 cp SLADE/gpl-2.0.txt "$DEPLOY_DIR"
 ln -s /Applications "$DEPLOY_DIR/Applications"
 
