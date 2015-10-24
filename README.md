@@ -14,15 +14,14 @@ This repository contains all third-party libraries required to build [SLADE](htt
 ### How to build
 There are two methods of building **SLADE**:
 
-1. _Using provided Xcode project:_  
-Execute `xcode.sh` script to clone the main repository and to start Xcode with the corresponding project opened. Now you can compile and debug **SLADE** like any other OS X application.  
-The downside of this method is it may fail if source files were added or removed from the main **SLADE** repository. In this case, use the CMake-based method.
-2. _Using CMake:_  
-Execute `build.sh` script to clone the main repository and to build **SLADE**. The application bundle is located inside `build` directory.
+1. _From Xcode:_  
+Execute `xcode.sh` script to start Xcode with the project opened. Now you can compile and debug **SLADE** like any other OS X application.
+2. _From command line:_  
+Execute `build.sh` script to build **SLADE**. The application bundle will be created inside `build/Release` directory.
 
-In both cases the main repository is cloned into **SLADE** directory. This happened only once during the first run of the script. You will need to pull changes by hand after that.  
-Also, you can switch to a branch other than **master** and run the corresponding script again.
+In both cases the main repository is cloned into **SLADE** directory. This happened only once during the first run of the script. You will need to pull changes by hand after that.
 
 It's possible to create a Disk Image `*.dmg` file, suitable for making redistributable builds. Execute `make_dmg.sh` script to generate it.
 
 You can build and create a Disk Image at an arbitrary Git tag by specifying its name as a command line parameter for `xcode.sh` and `make_dmg.sh` scripts.
+Also, you can switch to a branch other than **master** and run the corresponding script again.
