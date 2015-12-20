@@ -39,6 +39,7 @@ SFML_INC_DIR=$INC_DIR/SFML
 $CMAKE_EXE ../SLADE -GXcode \
 	-DCMAKE_OSX_ARCHITECTURES=x86_64 \
 	-DCMAKE_OSX_DEPLOYMENT_TARGET=10.6 \
+	-DCMAKE_CXX_FLAGS="-Wno-unused-variable -Wno-unused-private-field" \
 	-DwxWidgets_CONFIG_EXECUTABLE="${BIN_DIR}/wx-config" \
 	-DPKG_CONFIG_EXECUTABLE="${BIN_DIR}/pkg-config" \
 	-DSFML_STATIC=ON \
