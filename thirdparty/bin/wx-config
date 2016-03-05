@@ -24,8 +24,8 @@ case $@ in
 	exit 0
 	;;
 	
-	"--libs std,aui,gl,stc,richtext,propgrid,media,html")
-	echo -L`pwd`/lib -framework Carbon -framework Cocoa -framework IOKit -framework OpenGL -framework WebKit -lwx_osx_cocoau_aui -lwx_osx_cocoau_gl -lwx_osx_cocoau_stc -lwx_osx_cocoau_richtext -lwx_osx_cocoau_propgrid -lwx_osx_cocoau_media -lwx_osx_cocoau_xrc -lwx_osx_cocoau_webview -lwx_osx_cocoau_qa -lwx_baseu_net -lwx_osx_cocoau_html -lwx_osx_cocoau_adv -lwx_osx_cocoau_core -lwx_baseu_xml -lwx_baseu -lwxscintilla -ljpeg -lexpat -lwxregexu -lwxtiff -lwxpng -lz -lpthread -liconv	
+	"--libs std,aui,gl,stc,richtext,propgrid,media,html"|"--libs std,aui,gl,stc,richtext,propgrid,media,webview")
+	echo -L`pwd`/lib -framework Carbon -framework Cocoa -framework IOKit -framework OpenGL -framework WebKit -lwx_osx_cocoau_aui -lwx_osx_cocoau_gl -lwx_osx_cocoau_stc -lwx_osx_cocoau_richtext -lwx_osx_cocoau_propgrid -lwx_osx_cocoau_media -lwx_osx_cocoau_xrc -lwx_osx_cocoau_webview -lwx_osx_cocoau_qa -lwx_baseu_net -lwx_osx_cocoau_html -lwx_osx_cocoau_adv -lwx_osx_cocoau_core -lwx_baseu_xml -lwx_baseu -lwxscintilla -ljpeg -lexpat -lwxregexu -lwxtiff -lwxpng -lz -lpthread -liconv
 	exit 0
 	;;
 esac
