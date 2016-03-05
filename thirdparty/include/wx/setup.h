@@ -1,4 +1,4 @@
-/* lib/wx/include/osx_cocoa-unicode-static-3.0/wx/setup.h.  Generated from setup.h.in by configure.  */
+/* lib/wx/include/osx_cocoa-unicode-static-3.1/wx/setup.h.  Generated from setup.h.in by configure.  */
 /* This define (__WX_SETUP_H__) is used both to ensure setup.h is included
  * only once and to indicate that we are building using configure. */
 #ifndef __WX_SETUP_H__
@@ -14,9 +14,6 @@
 /* #undef inline */
 
 #endif /* __cplusplus */
-
-/* fill in with the string wxGetOsDescription() will return */
-#define WXWIN_OS_DESCRIPTION "Darwin 10.8.0 i386"
 
 /* the installation location prefix from configure */
 #define wxINSTALL_PREFIX "/usr/local"
@@ -60,14 +57,14 @@
 /* Define this if your version of GTK+ is greater than 2.0 */
 /* #undef __WXGTK20__ */
 
-/* Define this if your version of GTK+ is greater than 2.6 */
-/* #undef __WXGTK26__ */
-
 /* Define this if your version of GTK+ is greater than 2.10 */
 /* #undef __WXGTK210__ */
 
 /* Define this if your version of GTK+ is greater than 2.18 */
 /* #undef __WXGTK218__ */
+
+/* Define this if your version of GTK+ is greater than 2.20 */
+/* #undef __WXGTK220__ */
 
 /* Define this if your version of GTK+ is >= 3.0 */
 /* #undef __WXGTK3__ */
@@ -117,7 +114,6 @@
 
 /* PowerPC Darwin & Mac OS X */
 /* #undef __POWERPC__ */
-#define TARGET_CARBON 1
 
 /* Hack to make IOGraphicsTypes.h not define Point conflicting with MacTypes */
 /* #undef __Point__ */
@@ -143,9 +139,6 @@
 /* #undef WINVER */
 #endif
 
-/* OS/2 with EMX */
-/* #undef __OS2__ */
-
 /* --- start common options --- */
 
 #ifndef wxUSE_GUI
@@ -153,9 +146,9 @@
 #endif
 
 
-#define WXWIN_COMPATIBILITY_2_6 0
+#define WXWIN_COMPATIBILITY_2_8 0
 
-#define WXWIN_COMPATIBILITY_2_8 1
+#define WXWIN_COMPATIBILITY_3_0 1
 
 #define wxDIALOG_UNIT_COMPATIBILITY   0
 
@@ -211,12 +204,9 @@
 
 #define wxUSE_STL 0
 
-#if defined(__DMC__) || defined(__WATCOMC__) \
-        || (defined(_MSC_VER) && _MSC_VER < 1200)
-    #define wxUSE_STD_DEFAULT  0
-#else
-    #define wxUSE_STD_DEFAULT  0
-#endif
+#define wxUSE_STD_DEFAULT  0
+
+#define wxUSE_STD_CONTAINERS_COMPATIBLY 1
 
 #define wxUSE_STD_CONTAINERS 0
 
@@ -257,7 +247,7 @@
 
 #define wxUSE_STOPWATCH 1
 
-#define wxUSE_FSWATCHER 1
+#define wxUSE_FSWATCHER     0
 
 #define wxUSE_CONFIG 1
 
@@ -349,15 +339,7 @@
 
 
 #ifdef _MSC_VER
-#   if _MSC_VER >= 1310
-
-
 #define wxUSE_GRAPHICS_CONTEXT 1
-#   else
-
-
-#       define wxUSE_GRAPHICS_CONTEXT 1
-#   endif
 #else
 
 
@@ -379,6 +361,7 @@
 
 #define wxUSE_TIPWINDOW 1
 
+#define wxUSE_ACTIVITYINDICATOR 1
 #define wxUSE_ANIMATIONCTRL 1
 #define wxUSE_BANNERWINDOW 1
 #define wxUSE_BUTTON 1
@@ -452,6 +435,8 @@
 
 #define wxUSE_REARRANGECTRL 1
 
+#define wxUSE_ADDREMOVECTRL 1
+
 
 #define wxUSE_ACCEL 1
 
@@ -514,6 +499,8 @@
 #define wxUSE_MSGDLG 1
 
 #define wxUSE_PROGRESSDLG 1
+
+#define wxUSE_NATIVE_PROGRESSDLG 1
 
 #define wxUSE_STARTUP_TIPS 1
 
@@ -651,17 +638,27 @@
 
 /* --- start MSW options --- */
 
-#ifndef wxUSE_UNICODE_MSLU
-    #define wxUSE_UNICODE_MSLU 0
+
+#define wxUSE_GRAPHICS_GDIPLUS wxUSE_GRAPHICS_CONTEXT
+
+#if defined(_MSC_VER) && _MSC_VER >= 1600
+    #define wxUSE_GRAPHICS_DIRECT2D wxUSE_GRAPHICS_CONTEXT
+#else
+    #define wxUSE_GRAPHICS_DIRECT2D 0
 #endif
 
-#define wxUSE_MFC           0
 
 #define wxUSE_OLE           0
 
 #define wxUSE_OLE_AUTOMATION 0
 
 #define wxUSE_ACTIVEX 0
+
+#if defined(_MSC_VER) && _MSC_VER >= 1700
+    #define wxUSE_WINRT 0
+#else
+    #define wxUSE_WINRT 0
+#endif
 
 #define wxUSE_DC_CACHEING 0
 
@@ -678,6 +675,8 @@
 #define wxUSE_OWNER_DRAWN 0
 
 #define wxUSE_TASKBARICON_BALLOONS 1
+
+#define wxUSE_TASKBARBUTTON 0
 
 #define wxUSE_UXTHEME           0
 
@@ -697,7 +696,7 @@
 /*
  * Define if your compiler supports the explicit keyword
  */
-#define HAVE_EXPLICIT 1
+/* #undef HAVE_EXPLICIT */
 
 /*
  * Define if your compiler has C99 va_copy
@@ -723,7 +722,7 @@
 /*
  * Define if your compiler has std::wstring
  */
-#define HAVE_STD_WSTRING 1
+/* #undef HAVE_STD_WSTRING */
 /*
  * Define if your compiler has compliant std::string::compare
  */
@@ -820,14 +819,6 @@
  */
 #define wxUSE_LIBGNOMEVFS 0
 /*
- * Use the Hildon framework
- */
-#define wxUSE_LIBHILDON 0
-/*
- * Use the Hildon 2.0 framework
- */
-#define wxUSE_LIBHILDON2 0
-/*
  * Use libnotify library.
  */
 #define wxUSE_LIBNOTIFY 0
@@ -846,7 +837,7 @@
 /*
  * Define if compiler has __thread keyword.
  */
-/* #undef HAVE___THREAD_KEYWORD */
+#define HAVE___THREAD_KEYWORD 1
 /*
  * Define if large (64 bit file offsets) files are supported.
  */
@@ -987,7 +978,7 @@
 /* #undef HAVE_STATVFS */
 
 /* Define if you have strtoull() and strtoll() */
-#define HAVE_STRTOULL 1
+/* #undef HAVE_STRTOULL */
 
 /* Define if you have all functions to set thread priority */
 #define HAVE_THREAD_PRIORITY_FUNCTIONS 1
@@ -1071,6 +1062,9 @@
 
 /* Define if you have the dlerror function.  */
 #define HAVE_DLERROR 1
+
+/* Define if you have the dladdr function.  */
+#define HAVE_DLADDR 1
 
 /* Define if you have Posix fnctl() function. */
 #define HAVE_FCNTL 1
@@ -1253,7 +1247,7 @@
 /* #undef wxHAS_INOTIFY */
 
 /* Define if you have kqueu_xxx() functions. */
-#define wxHAS_KQUEUE 1
+/* #undef wxHAS_KQUEUE */
 
 /* -------------------------------------------------------------------------
    Win32 adjustments section
