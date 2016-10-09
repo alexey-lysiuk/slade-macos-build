@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2013 Laurent Gomila (laurent.gom@gmail.com)
+// Copyright (C) 2007-2016 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -56,13 +56,13 @@ class Event;
 ////////////////////////////////////////////////////////////
 class SFML_WINDOW_API Window : GlResource, NonCopyable
 {
-public :
+public:
 
     ////////////////////////////////////////////////////////////
     /// \brief Default constructor
     ///
     /// This constructor doesn't actually create the window,
-    /// use the other constructors or call "create" to do so.
+    /// use the other constructors or call create() to do so.
     ///
     ////////////////////////////////////////////////////////////
     Window();
@@ -72,7 +72,7 @@ public :
     ///
     /// This constructor creates the window with the size and pixel
     /// depth defined in \a mode. An optional style can be passed to
-    /// customize the look and behaviour of the window (borders,
+    /// customize the look and behavior of the window (borders,
     /// title bar, resizable, closable, ...). If \a style contains
     /// Style::Fullscreen, then \a mode must be a valid video mode.
     ///
@@ -82,7 +82,7 @@ public :
     ///
     /// \param mode     Video mode to use (defines the width, height and depth of the rendering area of the window)
     /// \param title    Title of the window
-    /// \param style    Window style
+    /// \param style    %Window style, a bitwise OR combination of sf::Style enumerators
     /// \param settings Additional settings for the underlying OpenGL context
     ///
     ////////////////////////////////////////////////////////////
@@ -107,7 +107,7 @@ public :
     ////////////////////////////////////////////////////////////
     /// \brief Destructor
     ///
-    /// Closes the window and free all the resources attached to it.
+    /// Closes the window and frees all the resources attached to it.
     ///
     ////////////////////////////////////////////////////////////
     virtual ~Window();
@@ -119,9 +119,13 @@ public :
     /// If \a style contains Style::Fullscreen, then \a mode
     /// must be a valid video mode.
     ///
+    /// The fourth parameter is an optional structure specifying
+    /// advanced OpenGL context settings such as antialiasing,
+    /// depth-buffer bits, etc.
+    ///
     /// \param mode     Video mode to use (defines the width, height and depth of the rendering area of the window)
     /// \param title    Title of the window
-    /// \param style    Window style
+    /// \param style    %Window style, a bitwise OR combination of sf::Style enumerators
     /// \param settings Additional settings for the underlying OpenGL context
     ///
     ////////////////////////////////////////////////////////////
@@ -133,6 +137,10 @@ public :
     /// Use this function if you want to create an OpenGL
     /// rendering area into an already existing control.
     /// If the window was already created, it closes it first.
+    ///
+    /// The second parameter is an optional structure specifying
+    /// advanced OpenGL context settings such as antialiasing,
+    /// depth-buffer bits, etc.
     ///
     /// \param handle   Platform-specific handle of the control
     /// \param settings Additional settings for the underlying OpenGL context
@@ -207,7 +215,7 @@ public :
     ///
     /// This function is blocking: if there's no pending event then
     /// it will wait until an event is received.
-    /// After this function returns (and no error occured),
+    /// After this function returns (and no error occurred),
     /// the \a event object is always valid and filled properly.
     /// This function is typically used when you have a thread that
     /// is dedicated to events handling: you want to make this thread
@@ -222,7 +230,7 @@ public :
     ///
     /// \param event Event to be returned
     ///
-    /// \return False if any error occured
+    /// \return False if any error occurred
     ///
     /// \see pollEvent
     ///
@@ -274,7 +282,7 @@ public :
     /// \see getSize
     ///
     ////////////////////////////////////////////////////////////
-    void setSize(const Vector2u size);
+    void setSize(const Vector2u& size);
 
     ////////////////////////////////////////////////////////////
     /// \brief Change the title of the window
@@ -296,7 +304,9 @@ public :
     ///
     /// \param width  Icon's width, in pixels
     /// \param height Icon's height, in pixels
-    /// \param pixels Pointer to the array of pixels in memory
+    /// \param pixels Pointer to the array of pixels in memory. The
+    ///               pixels are copied, so you need not keep the
+    ///               source alive after calling this function.
     ///
     /// \see setTitle
     ///
@@ -337,6 +347,21 @@ public :
     ///
     ////////////////////////////////////////////////////////////
     void setMouseCursorVisible(bool visible);
+
+    ////////////////////////////////////////////////////////////
+    /// \brief Grab or release the mouse cursor
+    ///
+    /// If set, grabs the mouse cursor inside this window's client
+    /// area so it may no longer be moved outside its bounds.
+    /// Note that grabbing is only active while the window has
+    /// focus and calling this function for fullscreen windows
+    /// won't have any effect (fullscreen windows always grab the
+    /// cursor).
+    ///
+    /// \param grabbed True to enable, false to disable
+    ///
+    ////////////////////////////////////////////////////////////
+    void setMouseCursorGrabbed(bool grabbed);
 
     ////////////////////////////////////////////////////////////
     /// \brief Enable or disable automatic key-repeat
@@ -391,6 +416,7 @@ public :
     /// on the previous thread first if it was active.
     /// Only one window can be active on a thread at a time, thus
     /// the window previously active (if any) automatically gets deactivated.
+    /// This is not to be confused with requestFocus().
     ///
     /// \param active True to activate, false to deactivate
     ///
@@ -398,6 +424,35 @@ public :
     ///
     ////////////////////////////////////////////////////////////
     bool setActive(bool active = true) const;
+
+    ////////////////////////////////////////////////////////////
+    /// \brief Request the current window to be made the active
+    ///        foreground window
+    ///
+    /// At any given time, only one window may have the input focus
+    /// to receive input events such as keystrokes or mouse events.
+    /// If a window requests focus, it only hints to the operating
+    /// system, that it would like to be focused. The operating system
+    /// is free to deny the request.
+    /// This is not to be confused with setActive().
+    ///
+    /// \see hasFocus
+    ///
+    ////////////////////////////////////////////////////////////
+    void requestFocus();
+
+    ////////////////////////////////////////////////////////////
+    /// \brief Check whether the window has the input focus
+    ///
+    /// At any given time, only one window may have the input focus
+    /// to receive input events such as keystrokes or most mouse
+    /// events.
+    ///
+    /// \return True if window has focus, false otherwise
+    /// \see requestFocus
+    ///
+    ////////////////////////////////////////////////////////////
+    bool hasFocus() const;
 
     ////////////////////////////////////////////////////////////
     /// \brief Display on screen what has been rendered to the window so far
@@ -423,7 +478,7 @@ public :
     ////////////////////////////////////////////////////////////
     WindowHandle getSystemHandle() const;
 
-protected :
+protected:
 
     ////////////////////////////////////////////////////////////
     /// \brief Function called after the window has been created

@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2013 Laurent Gomila (laurent.gom@gmail.com)
+// Copyright (C) 2007-2016 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -43,13 +43,13 @@ namespace sf
 ////////////////////////////////////////////////////////////
 class SFML_GRAPHICS_API RenderWindow : public Window, public RenderTarget
 {
-public :
+public:
 
     ////////////////////////////////////////////////////////////
     /// \brief Default constructor
     ///
     /// This constructor doesn't actually create the window,
-    /// use the other constructors or call "create" to do so.
+    /// use the other constructors or call create() to do so.
     ///
     ////////////////////////////////////////////////////////////
     RenderWindow();
@@ -59,7 +59,7 @@ public :
     ///
     /// This constructor creates the window with the size and pixel
     /// depth defined in \a mode. An optional style can be passed to
-    /// customize the look and behaviour of the window (borders,
+    /// customize the look and behavior of the window (borders,
     /// title bar, resizable, closable, ...).
     ///
     /// The fourth parameter is an optional structure specifying
@@ -69,7 +69,7 @@ public :
     ///
     /// \param mode     Video mode to use (defines the width, height and depth of the rendering area of the window)
     /// \param title    Title of the window
-    /// \param style    Window style
+    /// \param style    %Window style, a bitwise OR combination of sf::Style enumerators
     /// \param settings Additional settings for the underlying OpenGL context
     ///
     ////////////////////////////////////////////////////////////
@@ -81,12 +81,13 @@ public :
     /// Use this constructor if you want to create an SFML
     /// rendering area into an already existing control.
     ///
-    /// The fourth parameter is an optional structure specifying
+    /// The second parameter is an optional structure specifying
     /// advanced OpenGL context settings such as antialiasing,
     /// depth-buffer bits, etc. You shouldn't care about these
     /// parameters for a regular usage of the graphics module.
     ///
-    /// \param handle   Platform-specific handle of the control
+    /// \param handle   Platform-specific handle of the control (\a HWND on
+    ///                 Windows, \a %Window on Linux/FreeBSD, \a NSWindow on OS X)
     /// \param settings Additional settings for the underlying OpenGL context
     ///
     ////////////////////////////////////////////////////////////
@@ -95,7 +96,7 @@ public :
     ////////////////////////////////////////////////////////////
     /// \brief Destructor
     ///
-    /// Closes the window and free all the resources attached to it.
+    /// Closes the window and frees all the resources attached to it.
     ///
     ////////////////////////////////////////////////////////////
     virtual ~RenderWindow();
@@ -114,6 +115,17 @@ public :
     ////////////////////////////////////////////////////////////
     /// \brief Copy the current contents of the window to an image
     ///
+    /// \deprecated
+    /// Use a sf::Texture and its sf::Texture::update(const Window&)
+    /// function and copy its contents into an sf::Image instead.
+    /// \code
+    /// sf::Vector2u windowSize = window.getSize();
+    /// sf::Texture texture;
+    /// texture.create(windowSize.x, windowSize.y);
+    /// texture.update(window);
+    /// sf::Image screenshot = texture.copyToImage();
+    /// \endcode
+    ///
     /// This is a slow operation, whose main purpose is to make
     /// screenshots of the application. If you want to update an
     /// image with the contents of the window and then use it for
@@ -125,7 +137,7 @@ public :
     /// \return Image containing the captured contents
     ///
     ////////////////////////////////////////////////////////////
-    Image capture() const;
+    SFML_DEPRECATED Image capture() const;
 
 protected:
 
@@ -148,7 +160,7 @@ protected:
     ////////////////////////////////////////////////////////////
     virtual void onResize();
 
-private :
+private:
 
     ////////////////////////////////////////////////////////////
     /// \brief Activate the target for rendering

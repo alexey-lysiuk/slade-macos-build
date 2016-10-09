@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2013 Laurent Gomila (laurent.gom@gmail.com)
+// Copyright (C) 2007-2016 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -46,7 +46,7 @@ namespace priv
 ////////////////////////////////////////////////////////////
 class SFML_GRAPHICS_API RenderTexture : public RenderTarget
 {
-public :
+public:
 
     ////////////////////////////////////////////////////////////
     /// \brief Default constructor
@@ -73,7 +73,7 @@ public :
     /// doing anything with the render-texture.
     /// The last parameter, \a depthBuffer, is useful if you want
     /// to use the render-texture for 3D OpenGL rendering that requires
-    /// a depth-buffer. Otherwise it is unnecessary, and you should
+    /// a depth buffer. Otherwise it is unnecessary, and you should
     /// leave this parameter to false (which is its default value).
     ///
     /// \param width       Width of the render-texture
@@ -132,7 +132,23 @@ public :
     bool isRepeated() const;
 
     ////////////////////////////////////////////////////////////
-    /// \brief Activate of deactivate the render-texture for rendering
+    /// \brief Generate a mipmap using the current texture data
+    ///
+    /// This function is similar to Texture::generateMipmap and operates
+    /// on the texture used as the target for drawing.
+    /// Be aware that any draw operation may modify the base level image data.
+    /// For this reason, calling this function only makes sense after all
+    /// drawing is completed and display has been called. Not calling display
+    /// after subsequent drawing will lead to undefined behavior if a mipmap
+    /// had been previously generated.
+    ///
+    /// \return True if mipmap generation was successful, false if unsuccessful
+    ///
+    ////////////////////////////////////////////////////////////
+    bool generateMipmap();
+
+    ////////////////////////////////////////////////////////////
+    /// \brief Activate or deactivate the render-texture for rendering
     ///
     /// This function makes the render-texture's context current for
     /// future OpenGL rendering operations (so you shouldn't care
@@ -186,7 +202,7 @@ public :
     ////////////////////////////////////////////////////////////
     const Texture& getTexture() const;
 
-private :
+private:
 
     ////////////////////////////////////////////////////////////
     /// \brief Activate the target for rendering
