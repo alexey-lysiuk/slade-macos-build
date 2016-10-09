@@ -40,6 +40,8 @@ $CMAKE_EXE ../SLADE -GXcode \
 	-DCMAKE_OSX_ARCHITECTURES=x86_64 \
 	-DCMAKE_OSX_DEPLOYMENT_TARGET=10.6 \
 	-DCMAKE_CXX_FLAGS="-Wno-unused-variable -Wno-unused-private-field" \
+	-DCMAKE_XCODE_ATTRIBUTE_CLANG_CXX_LANGUAGE_STANDARD="c++0x" \
+	-DCMAKE_XCODE_ATTRIBUTE_CLANG_CXX_LIBRARY="libc++" \
 	-DwxWidgets_CONFIG_EXECUTABLE="${BIN_DIR}/wx-config" \
 	-DPKG_CONFIG_EXECUTABLE="${BIN_DIR}/pkg-config" \
 	-DSFML_STATIC=ON \
@@ -61,4 +63,4 @@ $CMAKE_EXE ../SLADE -GXcode \
 	-DFTGL_LIBRARY="${LIB_DIR}/libftgl.a" \
 	-DGLEW_INCLUDE_PATH="${INC_DIR}" \
 	-DGLEW_LIBRARY="${LIB_DIR}/libGLEW.a" \
-	-DCMAKE_EXE_LINKER_FLAGS="-framework AudioUnit -framework CoreAudio -framework CoreMIDI -framework OpenAL -framework QTKit -L\"${LIB_DIR}\" -lintl -lglib -logg -lvorbis -lvorbisenc -lFLAC -lsndfile"
+	-DCMAKE_EXE_LINKER_FLAGS="-framework AudioUnit -framework CoreAudio -framework CoreMIDI -framework OpenAL -framework QTKit -L\"${LIB_DIR}\" -lintl -lglib -logg -lvorbis -lvorbisenc -lvorbisfile -lFLAC -lsndfile"
