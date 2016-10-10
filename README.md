@@ -1,12 +1,12 @@
-## OS X build environment for SLADE
+## macOS build environment for SLADE
 
 ### About
-This repository contains all third-party libraries required to build [SLADE](http://slade.mancubus.net/) Doom Editor on OS X.  
+This repository contains all third-party libraries required to build [SLADE](http://slade.mancubus.net/) Doom Editor on macOS.  
 **NOTE:** If you are using [Homebrew](http://brew.sh/), there is [a better way](https://github.com/alexey-lysiuk/homebrew-slade/blob/master/README.md) to get **SLADE**.
 
 ### Requirements
 * Intel Mac with 64-bit CPU
-* OS X 10.7 Snow Leopard or newer
+* macOS 10.7 Lion or newer
 * [Xcode](https://developer.apple.com/xcode/) 4.6 or newer
 * [Git](https://git-scm.com/) (installed with the recent versions of Xcode)
 * [CMake](https://www.cmake.org/) 2.8 or newer
@@ -15,7 +15,7 @@ This repository contains all third-party libraries required to build [SLADE](htt
 There are two methods of building **SLADE**:
 
 1. _From Xcode:_  
-Execute `xcode.sh` script to start Xcode with the project opened. Now you can compile and debug **SLADE** like any other OS X application.
+Execute `xcode.sh` script to start Xcode with the project opened. Now you can compile and debug **SLADE** like any other macOS application.
 2. _From command line:_  
 Execute `build.sh` script to build **SLADE**. The application bundle will be created inside `build/Release` directory.
 
