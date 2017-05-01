@@ -60,7 +60,7 @@ $CMAKE_EXE ../SLADE -GXcode \
 	-DFREETYPE_INCLUDE_DIRS="${INC_DIR}/freetype2" \
 	-DFREETYPE_LIBRARY="${LIB_DIR}/libfreetype.a" \
 	-DFTGL_INCLUDE_DIR="${INC_DIR}" \
-	-DFTGL_LIBRARY="${LIB_DIR}/libftgl.a" \
-	-DGLEW_INCLUDE_PATH="${INC_DIR}" \
+	-DFTGL_LIBRARIES="${LIB_DIR}/libftgl.a" \
+	-DGLEW_INCLUDE_DIR="${INC_DIR}" \
 	-DGLEW_LIBRARY="${LIB_DIR}/libGLEW.a" \
 	-DCMAKE_EXE_LINKER_FLAGS="-framework AudioUnit -framework CoreAudio -framework CoreMIDI -framework OpenAL -framework QTKit -L\"${LIB_DIR}\" -lintl -lglib -logg -lvorbis -lvorbisenc -lvorbisfile -lFLAC -lsndfile"
