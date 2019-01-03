@@ -34,36 +34,11 @@ BIN_DIR=$ROOT_DIR/thirdparty/bin
 INC_DIR=$ROOT_DIR/thirdparty/include
 LIB_DIR=$ROOT_DIR/thirdparty/lib
 
-SFML_INC_DIR=$INC_DIR/SFML
-
 $CMAKE_EXE ../SLADE -GXcode \
-	-DCMAKE_OSX_ARCHITECTURES=x86_64 \
 	-DCMAKE_OSX_DEPLOYMENT_TARGET=10.9 \
-	-DCMAKE_CXX_FLAGS="-stdlib=libc++ -Wno-unused-variable -Wno-unused-private-field" \
-	-DCMAKE_XCODE_ATTRIBUTE_CLANG_CXX_LANGUAGE_STANDARD="c++0x" \
-	-DCMAKE_XCODE_ATTRIBUTE_CLANG_CXX_LIBRARY="libc++" \
-	-DWX_GTK3=OFF \
-	-DwxWidgets_CONFIG_EXECUTABLE="${BIN_DIR}/wx-config" \
-	-DPKG_CONFIG_EXECUTABLE="${BIN_DIR}/pkg-config" \
-	-DSFML_STATIC=ON \
-	-DSFML_NETWORK_INCLUDE_DIR="${SFML_INC_DIR}" \
-	-DSFML_AUDIO_INCLUDE_DIR="${SFML_INC_DIR}" \
-	-DSFML_GRAPHICS_INCLUDE_DIR="${SFML_INC_DIR}" \
-	-DSFML_SYSTEM_INCLUDE_DIR="${SFML_INC_DIR}" \
-	-DSFML_WINDOW_INCLUDE_DIR="${SFML_INC_DIR}" \
-	-DSFML_NETWORK_LIBRARY_STATIC_NONDEBUG="${LIB_DIR}/libsfml-network-s.a" \
-	-DSFML_AUDIO_LIBRARY_STATIC_NONDEBUG="${LIB_DIR}/libsfml-audio-s.a" \
-	-DSFML_GRAPHICS_LIBRARY_STATIC_NONDEBUG="${LIB_DIR}/libsfml-graphics-s.a" \
-	-DSFML_SYSTEM_LIBRARY_STATIC_NONDEBUG="${LIB_DIR}/libsfml-system-s.a" \
-	-DSFML_WINDOW_LIBRARY_STATIC_NONDEBUG="${LIB_DIR}/libsfml-window-s.a" \
-	-DFLUIDSYNTH_INCLUDE_DIR="${INC_DIR}" \
-	-DFLUIDSYNTH_LIBRARIES="${LIB_DIR}/libfluidsynth.a" \
-	-DFREEIMAGE_INCLUDE_DIR="${INC_DIR}" \
-	-DFREEIMAGE_LIBRARIES="${LIB_DIR}/libfreeimage.a" \
-	-DFREETYPE_INCLUDE_DIRS="${INC_DIR}/freetype2" \
-	-DFREETYPE_LIBRARY="${LIB_DIR}/libfreetype.a" \
-	-DFTGL_INCLUDE_DIR="${INC_DIR}" \
-	-DFTGL_LIBRARIES="${LIB_DIR}/libftgl.a" \
-	-DGLEW_INCLUDE_DIR="${INC_DIR}" \
-	-DGLEW_LIBRARY="${LIB_DIR}/libGLEW.a" \
-	-DCMAKE_EXE_LINKER_FLAGS="-stdlib=libc++ -framework AudioUnit -framework CoreAudio -framework CoreMIDI -framework OpenAL -framework QTKit -L\"${LIB_DIR}\" -lintl -lglib -logg -lvorbis -lvorbisenc -lvorbisfile -lFLAC -lsndfile"
+	-DCMAKE_INCLUDE_PATH="${INC_DIR}" \
+	-DCMAKE_LIBRARY_PATH="${LIB_DIR}" \
+	-DWITH_WXPATH="${BIN_DIR}" \
+	-DSFML_STATIC=ON
+	
+# TODO: -DCMAKE_EXE_LINKER_FLAGS=
