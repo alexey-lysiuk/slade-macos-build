@@ -1026,14 +1026,14 @@ fi
 # Additional configuration for individual library components.
 ldflags_gl=""
 
-ldlibs_base="libz.dylib wxregex liblzma.dylib -framework Security -framework Carbon -framework Cocoa -framework CoreFoundation -framework IOKit"
-ldlibs_core="base wxjpeg wxpng wxtiff -framework AudioToolbox -framework WebKit "
-ldlibs_gl="base core OpenGL.framework OpenGL.framework"
-ldlibs_html="base core"
-ldlibs_media="base core -framework AVFoundation -framework AVKit -framework CoreMedia"
-ldlibs_xml="base libexpat.dylib"
-ldlibs_stc="base core wxscintilla"
-ldlibs_webview="base core -framework WebKit"
+ldlibs_base="-lwxtiff-3.1 -lwxregexu-3.1 -lwxscintilla-3.1 -lwxpng-3.1 -lwxjpeg-3.1 -framework Security -liconv -lz -llzma -lexpat"
+ldlibs_core="-lwzpng-3.1 -lwxjpeg-3.1  -lz -llzma -framework WebKit "
+ldlibs_gl="-framework OpenGL -framework AGL"
+ldlibs_html=""
+ldlibs_media="-framework AVFoundation -framework CoreMedia -weak_framework AVKit"
+ldlibs_xml=" -lexpat"
+ldlibs_stc="-lwxscintilla-3.1"
+ldlibs_webview=""
 
 
 # Order the libraries passed to us correctly for static linking.
@@ -1292,12 +1292,12 @@ else
     _include_cppflags="-I${includedir}"
 fi
 
-_cppflags=`echo "-I${libdir}/wx/include/osx_cocoa-unicode-static-3.1" $_include_cppflags "-DWXUSINGDLL -D__WXOSX_COCOA__ -D__WXMAC__ -D__WXOSX__" $_gui_cppflags`
+_cppflags=`echo "-I${libdir}/wx/include/osx_cocoa-unicode-static-3.1" $_include_cppflags "-D_FILE_OFFSET_BITS=64  -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__" $_gui_cppflags`
 
 # now without further ado, we can answer these too.
 [ -z "$output_option_cppflags" ] || echo $_cppflags
-[ -z "$output_option_cflags"   ] || echo $_cppflags "-pthread"
-[ -z "$output_option_cxxflags" ] || echo $_cppflags "-pthread"
+[ -z "$output_option_cflags"   ] || echo $_cppflags ""
+[ -z "$output_option_cxxflags" ] || echo $_cppflags ""
 [ -z "$output_option_gl_libs"  ] || echo `lib_flags_for gl`
 [ -z "$output_option_linkdeps" ] || echo $link_deps
 
