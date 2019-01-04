@@ -35,7 +35,7 @@ INC_DIR=$ROOT_DIR/thirdparty/include
 LIB_DIR=$ROOT_DIR/thirdparty/lib
 
 FRAMEWORKS=(AudioToolbox AudioUnit Carbon Cocoa CoreAudio CoreFoundation CoreMIDI IOKit)
-LIBRARIES=(openal ogg vorbis vorbisenc vorbisfile FLAC sndfile)
+LIBRARIES=(openal ogg vorbis vorbisenc vorbisfile FLAC sndfile intl glib-2.0)
 
 for ITEM in ${FRAMEWORKS[*]}; do
 	LINKER_FLAGS="${LINKER_FLAGS} -framework ${ITEM}"
