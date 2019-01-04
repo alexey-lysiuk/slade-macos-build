@@ -34,11 +34,22 @@ BIN_DIR=$ROOT_DIR/thirdparty/bin
 INC_DIR=$ROOT_DIR/thirdparty/include
 LIB_DIR=$ROOT_DIR/thirdparty/lib
 
+FRAMEWORKS=(AudioToolbox AudioUnit Carbon Cocoa CoreAudio CoreFoundation CoreMIDI IOKit)
+LIBRARIES=(openal ogg vorbis vorbisenc vorbisfile FLAC sndfile)
+
+for ITEM in ${FRAMEWORKS[*]}; do
+	LINKER_FLAGS="${LINKER_FLAGS} -framework ${ITEM}"
+done
+
+for ITEM in ${LIBRARIES[*]}; do
+	LINKER_FLAGS="${LINKER_FLAGS} -l${ITEM}"
+done
+
 $CMAKE_EXE ../SLADE -GXcode \
 	-DCMAKE_OSX_DEPLOYMENT_TARGET=10.9 \
 	-DCMAKE_INCLUDE_PATH="${INC_DIR}" \
 	-DCMAKE_LIBRARY_PATH="${LIB_DIR}" \
 	-DWITH_WXPATH="${BIN_DIR}" \
+	-DCMAKE_CXX_FLAGS="-Wno-unused-variable -Wno-unused-private-field" \
+	-DCMAKE_EXE_LINKER_FLAGS="${LINKER_FLAGS}" \
 	-DSFML_STATIC=ON
-	
-# TODO: -DCMAKE_EXE_LINKER_FLAGS=

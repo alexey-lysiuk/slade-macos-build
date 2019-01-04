@@ -1027,10 +1027,10 @@ fi
 ldflags_gl=""
 
 ldlibs_base="-lwxtiff-3.1 -lwxregexu-3.1 -lwxscintilla-3.1 -lwxpng-3.1 -lwxjpeg-3.1 -framework Security -liconv -lz -llzma -lexpat"
-ldlibs_core="-lwzpng-3.1 -lwxjpeg-3.1  -lz -llzma -framework WebKit "
+ldlibs_core="-lwxpng-3.1 -lwxjpeg-3.1 -framework WebKit -lz -llzma"
 ldlibs_gl="-framework OpenGL -framework AGL"
 ldlibs_html=""
-ldlibs_media="-framework AVFoundation -framework CoreMedia -weak_framework AVKit"
+ldlibs_media="-framework AVFoundation -framework CoreMedia -framework AVKit"
 ldlibs_xml=" -lexpat"
 ldlibs_stc="-lwxscintilla-3.1"
 ldlibs_webview=""
