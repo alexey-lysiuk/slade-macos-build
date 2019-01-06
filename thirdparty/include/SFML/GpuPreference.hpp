@@ -22,27 +22,53 @@
 //
 ////////////////////////////////////////////////////////////
 
-#ifndef SFML_GRAPHICS_EXPORT_HPP
-#define SFML_GRAPHICS_EXPORT_HPP
+#ifndef SFML_GPUPREFERENCE_HPP
+#define SFML_GPUPREFERENCE_HPP
+
 
 ////////////////////////////////////////////////////////////
-// Headers
+/// Headers
 ////////////////////////////////////////////////////////////
 #include <SFML/Config.hpp>
 
 
 ////////////////////////////////////////////////////////////
-// Define portable import / export macros
+/// \file
+///
+/// \brief File containing SFML_DEFINE_DISCRETE_GPU_PREFERENCE
+///
 ////////////////////////////////////////////////////////////
-#if defined(SFML_GRAPHICS_EXPORTS)
 
-    #define SFML_GRAPHICS_API SFML_API_EXPORT
+
+////////////////////////////////////////////////////////////
+/// \def SFML_DEFINE_DISCRETE_GPU_PREFERENCE
+///
+/// \brief A macro to encourage usage of the discrete GPU
+///
+/// In order to inform the Nvidia/AMD driver that an SFML
+/// application could benefit from using the more powerful
+/// discrete GPU, special symbols have to be publicly
+/// exported from the final executable.
+///
+/// SFML defines a helper macro to easily do this.
+///
+/// Place SFML_DEFINE_DISCRETE_GPU_PREFERENCE in the
+/// global scope of a source file that will be linked into
+/// the final executable. Typically it is best to place it
+/// where the main function is also defined.
+///
+////////////////////////////////////////////////////////////
+#if defined(SFML_SYSTEM_WINDOWS)
+
+    #define SFML_DEFINE_DISCRETE_GPU_PREFERENCE \
+                extern "C" __declspec(dllexport) unsigned long NvOptimusEnablement = 1; \
+                extern "C" __declspec(dllexport) unsigned long AmdPowerXpressRequestHighPerformance = 1;
 
 #else
 
-    #define SFML_GRAPHICS_API SFML_API_IMPORT
+    #define SFML_DEFINE_DISCRETE_GPU_PREFERENCE
 
 #endif
 
 
-#endif // SFML_GRAPHICS_EXPORT_HPP
+#endif // SFML_GPUPREFERENCE_HPP
