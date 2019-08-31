@@ -42,6 +42,7 @@ $CMAKE_EXE ../SLADE -GXcode \
 	-DCMAKE_CXX_FLAGS="-stdlib=libc++ -Wno-unused-variable -Wno-unused-private-field" \
 	-DCMAKE_XCODE_ATTRIBUTE_CLANG_CXX_LANGUAGE_STANDARD="c++0x" \
 	-DCMAKE_XCODE_ATTRIBUTE_CLANG_CXX_LIBRARY="libc++" \
+	-DZIPTOOL_ZIP_EXECUTABLE="${BIN_DIR}/zip" \
 	-DWX_GTK3=OFF \
 	-DwxWidgets_CONFIG_EXECUTABLE="${BIN_DIR}/wx-config" \
 	-DWITH_WXPATH="${BIN_DIR}" \
